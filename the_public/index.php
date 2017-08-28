@@ -26,7 +26,7 @@
             </a>
         </div>
     </div>
-    <div class="row">
+    <div class="row" style="text-align:center">
         <h1 style="text-align:center">El Chalán Aruba - The Best Peruvian Cuisine</h1>
     </div>
     <div class="row">
