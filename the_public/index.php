@@ -30,8 +30,9 @@
             </a>
         </div>
     </div>
-    <div class="row" style="text-align:center">
-        <p class="col-lg-6" style="text-align: left">
+    <div class="row">
+        <p class="col-lg-4"></p>
+        <p class="col-lg-4" style="text-align: left">
             <b>Address:</b> Caya G. F. Betico Croes 152, Oranjestad, Aruba <br/>
             <b>Hours:</b> <br/> 
             &nbsp;&nbsp;&nbsp;&nbsp;Monday  11:30AM–6PM <br/>
@@ -39,6 +40,7 @@
             <b>Phone:</b> +297 582 7591 <br/>
             <b>Email:</b> chalanaruba@hotmail.com <br/>            
         </p>
+        <p class="col-lg-4"></p>
     </div>
 </div>
 <!--elem_footer 1.0.0-->
