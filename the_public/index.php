@@ -31,11 +31,11 @@
         </div>
     </div>
     <div class="row" style="text-align:center">
-        <p style="text-align: left">
+        <p class="col-lg-6" style="text-align: left">
             <b>Address:</b> Caya G. F. Betico Croes 152, Oranjestad, Aruba <br/>
             <b>Hours:</b> <br/> 
-            Monday  11:30AM–6PM <br/>
-            Tuesday - Sunday    11:30AM–9PM <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;Monday  11:30AM–6PM <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;Tuesday - Sunday    11:30AM–9PM <br/>
             <b>Phone:</b> +297 582 7591 <br/>
             <b>Email:</b> chalanaruba@hotmail.com <br/>            
         </p>
