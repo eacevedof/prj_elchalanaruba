@@ -31,9 +31,9 @@
         </div>
     </div>
     <div class="row">
-        <br/><br/>
         <p class="col-lg-4"></p>
         <p class="col-lg-4" style="text-align: left">
+            <br/><br/>
             <b>Address:</b> Caya G. F. Betico Croes 152, Oranjestad, Aruba <br/>
             <b>Hours:</b> <br/> 
             &nbsp;&nbsp;&nbsp;&nbsp;Monday  11:30AM–6PM <br/>
