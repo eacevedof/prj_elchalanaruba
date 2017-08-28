@@ -16,6 +16,7 @@
 </head>
 <body>
 <div id="divMain" class="container-fluid">
+    <div class="row"></div>
     <div class="row">
         <div class="col-lg-12" style="text-align:center">
             <a rel="nofollow"  class="" href="https://www.facebook.com/elchalan.aruba/"> 
