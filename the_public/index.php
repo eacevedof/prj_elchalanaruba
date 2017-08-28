@@ -25,6 +25,8 @@
                 <img src="https://scontent-mia3-1.xx.fbcdn.net/v/t1.0-9/17156040_429150724099395_6365602522345009275_n.jpg?oh=5b2f35183c710fac81dd963b390d565c&oe=5A257B32" alt="El Chalán Aruba - Peruvian Restaurant" class="img-responsive center-block" />
             </a>
         </div>
+    </div>
+    <div class="row" style="text-align:center">
         <h1>El Chalán Aruba - Best Peruvian Cuisine</h1>
     </div>
     <div class="row">
