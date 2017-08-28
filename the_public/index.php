@@ -17,11 +17,7 @@
 <body>
 <div id="divMain" class="container-fluid">
     <div class="row">
-        <div class="span12" style="text-align:center">
-            <a href="mailto:chalanaruba@hotmail.com">
-                <button class="btn btn-large btn-primary">Contact us</button>
-            </a>
-        </div>
+        <br/><br/>
     </div>
     <div class="row">
         <div class="col-lg-12" style="text-align:center">
@@ -33,7 +29,7 @@
     <div class="row">
         <p class="col-lg-4"></p>
         <p class="col-lg-4" style="text-align: left">
-            <br/><br/>
+            <br/>
             <b>Address:</b> Caya G. F. Betico Croes 152, Oranjestad, Aruba <br/>
             <b>Hours:</b> <br/> 
             &nbsp;&nbsp;&nbsp;&nbsp;Monday  11:30AM–6PM <br/>
@@ -41,6 +37,9 @@
             <b>Phone:</b> +297 582 7591 <br/>
             <b>Email:</b> chalanaruba@hotmail.com <br/> 
             <b>Facebook:</b> https://www.facebook.com/elchalan.aruba
+            <a href="mailto:chalanaruba@hotmail.com">
+                <button class="btn btn-large btn-primary">Contact us</button>
+            </a>
         </p>
         <p class="col-lg-4"></p>
     </div>
