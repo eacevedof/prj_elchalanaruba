@@ -55,7 +55,7 @@
                 </a>
             </li>
             <li class="list-inline-item">
-                <a rel="nofollow"  class="btn btn-block" href="https://www.facebook.com/elchalan.aruba/"> 
+                <a rel="nofollow"  class="btn btn-block" target="_blank" href="https://www.facebook.com/elchalan.aruba/"> 
                     <span class="fa fa-facebook-square"></span>
                 </a>
             </li>            
