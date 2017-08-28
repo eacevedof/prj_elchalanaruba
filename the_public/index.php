@@ -16,7 +16,13 @@
 </head>
 <body>
 <div id="divMain" class="container-fluid">
-    <div class="row"></div>
+    <div class="row">
+        <div class="span12" style="text-align:center">
+            <a href="mailto:chalanaruba@hotmail.com">
+                <button class="btn btn-large btn-primary">Contact us</button>
+            </a>
+        </div>
+    </div>
     <div class="row">
         <div class="col-lg-12" style="text-align:center">
             <a rel="nofollow"  class="" href="https://www.facebook.com/elchalan.aruba/"> 
