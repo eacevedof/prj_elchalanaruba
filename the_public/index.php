@@ -18,18 +18,11 @@
 <div id="divMain" class="container-fluid">
     <div class="row">
         <div class="col-lg-12">
-            <img src="https://scontent-mia3-1.xx.fbcdn.net/v/t1.0-9/17156040_429150724099395_6365602522345009275_n.jpg?oh=5b2f35183c710fac81dd963b390d565c&oe=5A257B32">
+            <a rel="nofollow"  class="" href="https://www.facebook.com/elchalan.aruba/"> 
+                <img src="https://scontent-mia3-1.xx.fbcdn.net/v/t1.0-9/17156040_429150724099395_6365602522345009275_n.jpg?oh=5b2f35183c710fac81dd963b390d565c&oe=5A257B32" alt="El Chalán Aruba - Peruvian Restaurant" class="img-responsive center-block" />
+            </a>
         </div>
     </div>
-    <p class="text-center">
-<!--elem_totop-->
-        <span class="hidden">
-            <a href="#divMain" class="well well-sm">
-                <i class="glyphicon glyphicon-chevron-up"></i> Back to Top
-            </a>
-        </span>
-<!--/elem_totop-->        
-    </p>
 </div>
 <!--elem_footer 1.0.0-->
 <footer class="footer">
