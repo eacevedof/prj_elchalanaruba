@@ -51,6 +51,7 @@
             <b>Phone:</b> +297 582 7591 <br/>
             <b>Email:</b> chalanaruba@hotmail.com <br/> 
             <b>Facebook:</b> https://www.facebook.com/elchalan.aruba <br/><br/>
+            <b>Twitter:</b> https://twitter.com/ELCHALANARUBA <br/><br/>
             <a href="mailto:chalanaruba@hotmail.com" style="text-align:center">
                 <button class="btn btn-large btn-primary">Contact us</button>
             </a>
@@ -72,6 +73,11 @@
                     <span class="fa fa-facebook-square"></span>
                 </a>
             </li>            
+            <li class="list-inline-item">
+                <a rel="nofollow"  class="btn btn-block" target="_blank" href="https://twitter.com/ELCHALANARUBA"> 
+                    <span class="fa fa-twitter-square"></span>
+                </a>
+            </li>
         </ul>
     </div>
 </footer>
