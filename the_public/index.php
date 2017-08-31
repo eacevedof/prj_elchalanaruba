@@ -49,10 +49,10 @@
             &nbsp;&nbsp;&nbsp;&nbsp;Monday  11:30AM–6PM <br/>
             &nbsp;&nbsp;&nbsp;&nbsp;Tuesday - Sunday    11:30AM–9PM <br/>
             <b>Phone:</b> +297 582 7591 <br/>
-            <b>Email:</b> chalanaruba@hotmail.com <br/> 
+            <b>Email:</b> elchalanaruba@gmail.com <br/> 
             <b>Facebook:</b> https://www.facebook.com/elchalan.aruba <br/>
             <b>Twitter:</b> https://twitter.com/ELCHALANARUBA <br/><br/>
-            <a href="mailto:chalanaruba@hotmail.com" style="text-align:center">
+            <a href="mailto:elchalanaruba@gmail.com" style="text-align:center">
                 <button class="btn btn-large btn-primary">Contact us</button>
             </a>
         </p>
