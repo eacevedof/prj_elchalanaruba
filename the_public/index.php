@@ -56,8 +56,11 @@ if($arRun)
     $oTfwController = new $arRun["nscontroller"]();
     if(method_exists($oTfwController,$arRun["method"]))
         $oTfwController->{$arRun["method"]}();
+    elseif(method_exists($oTfwController,"status_404"))
+        $oTfwController->{"status_404"}();        
     else
     {
-        die("404");
+        header("HTTP/1.0 404 Not Found");
+        die("Error 404 Not Found!!");
     }
 }
