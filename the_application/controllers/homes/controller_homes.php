@@ -23,7 +23,6 @@ class ControllerHomes extends TheApplicationController
     //
     public function index()
     {
-        $this->log_debug($this);
         include("views/homes/view_index.php");
     }
 }//ControllerHomes
