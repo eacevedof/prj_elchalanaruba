@@ -13,7 +13,7 @@ const Root = ({ store }) => (
             <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/contact/" component={Contact} />
-                <Route component={Status404} />
+                <Route path="*" component={Status404} />
             </Switch>
         </BrowserRouter>
     </Provider>

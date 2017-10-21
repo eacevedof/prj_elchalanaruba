@@ -2,11 +2,38 @@
 import React from "react";
 import { connect } from "react-redux"
 import ElementFooter from "../elements/ElementFooter";
-
+import styles from "./Status.css"
+console.log(styles,"oooooostyles")
 const view_contact = () => {
     return (
-        <div>
-            Error 404
+        
+        <div className="">
+            <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylessheet"/>
+
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-12">
+                        <div className={styles['error-template']+' '+styles.redit}>
+                            <h1>
+                                Oops!</h1>
+                            <h2>
+                                404 Not Found</h2>
+                            <div>
+                                Sorry, an error has occured, Requested page not found!
+                            </div>
+                            <div className={styles['error-actions']}>
+                                <a href="/" className="btn btn-primary btn-lg">
+                                    <span className="glyphicon glyphicon-home"></span>
+                                    Take Me Home 
+                                </a>
+                                <a href="http://www.elchalanaruba.com/contact/" className={`btn btn-default btn-lg`}>
+                                    <span className="glyphicon glyphicon-envelope"></span> Contact Support 
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     )//return jsx
 }//view_contact
