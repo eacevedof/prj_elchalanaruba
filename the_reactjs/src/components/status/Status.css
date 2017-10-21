@@ -2,17 +2,3 @@
 .error-actions {margin-top:15px;margin-bottom:15px;}
 .error-actions .btn { margin-right:10px; }
 
-.redit {border:1px solid red;}
-
-.primary {
-  background: 'green';
-}
-
-.warning {
-  background: 'yellow';
-}
-
-.button {
-  padding: 1em;
-}
-
