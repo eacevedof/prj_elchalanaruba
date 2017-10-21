@@ -27,7 +27,7 @@ class TheApplicationController extends TheFrameworkController
             $sContent = var_export($sContent,1);
         $oLog = new ComponentLog();
         $oLog->set_subfolder("debug");
-        $oLog->write($sContent,$sTitle);
+        $oLog->save($sContent,$sTitle);
     }
     
     protected function log_error($sContent,$sTitle="")
@@ -36,12 +36,12 @@ class TheApplicationController extends TheFrameworkController
             $sContent = var_export($sContent,1);        
         $oLog = new ComponentLog();
         $oLog->set_subfolder("error");
-        $oLog->write($sContent,$sTitle);
+        $oLog->save($sContent,$sTitle);
     }
     
     public function status_404()
     {
         header("HTTP/1.0 404 Not Found");
-        include("views/status/view_404.php");
+        include("views/status/404.php");
     }
 }//TheApplicationController

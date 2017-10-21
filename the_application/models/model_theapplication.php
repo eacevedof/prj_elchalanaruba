@@ -54,6 +54,15 @@ class TheApplicationModel extends TheFrameworkModel
         return [];
     }//json_read  
     
+    public function get_by_props($sFieldname,$sValue)
+    {
+        $arTmp = [];
+        foreach($this->arData as $i=>$arRow)
+            if(isset($arRow[$sFieldname]) && $arRow[$sFieldname]==$sValue)
+                $arTmp[$i] = $arRow;
+        return $arTmp;
+    }//get_by_props    
+    
     public function get_data(){return $this->arData;}
     
 }//TheApplicationModel

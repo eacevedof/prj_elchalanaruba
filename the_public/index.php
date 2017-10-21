@@ -1,7 +1,8 @@
 <?php
-//index.php 2.0.1
+ob_start();
+//index.php 2.1.0
 //carga el loader de composer. Este loader solo tiene registrado el loader de helpers.
-//C:\xampp\htdocs\wwwelchalan\the_public
+//<project>\the_public\index.php
 $sPathPublic = dirname(__FILE__);
 $sPathPublic = realpath($sPathPublic);
 define("TFW_PATH_PUBLIC",$sPathPublic);
@@ -41,12 +42,13 @@ foreach($arPaths as $i=>$sPaths)
 $sPathInclude = implode(PATH_SEPARATOR,$arPaths);
 set_include_path($sPathInclude);
 
-require_once "the_vendor/bootstrap.php";//atuload para composer
+require_once "the_vendor/bootstrap.php";//autoload para composer
 require_once "boot/bootstrap.php";//the_application/boot/bootsrap.php
 
 use TheApplication\Components\ComponentRouter;
 $arRun = ComponentRouter::run();
 
+//bug($arRun,"arRun");
 if($arRun)
 {
     //bug($sPathPublic,"pathpublic");
@@ -61,6 +63,13 @@ if($arRun)
     else
     {
         header("HTTP/1.0 404 Not Found");
-        die("Error 404 Not Found!!");
+        die("Error 404: Content Not Found!!");
     }
 }
+else 
+{
+    header("HTTP/1.0 404 Not Found");
+    include("views/status/404.php");
+    die();
+}
+ob_end_flush();
