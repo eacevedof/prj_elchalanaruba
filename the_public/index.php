@@ -1,85 +1,63 @@
 <?php
+//index.php 2.0.1
+//carga el loader de composer. Este loader solo tiene registrado el loader de helpers.
+//C:\xampp\htdocs\wwwelchalan\the_public
+$sPathPublic = dirname(__FILE__);
+$sPathPublic = realpath($sPathPublic);
+define("TFW_PATH_PUBLIC",$sPathPublic);
+define("TFW_PATH_PUBLICDS",TFW_PATH_PUBLIC.DIRECTORY_SEPARATOR);
+$sPathProject = realpath(TFW_PATH_PUBLICDS."..");
+define("TFW_PATH_PROJECT",$sPathProject);
+define("TFW_PATH_PROJECTDS",TFW_PATH_PROJECT.DIRECTORY_SEPARATOR);
+define("TFW_PATH_APPLICATION",TFW_PATH_PROJECTDS."the_application");
+define("TFW_PATH_APPLICATIONDS",TFW_PATH_APPLICATION.DIRECTORY_SEPARATOR);
+define("TFW_PATH_VENDOR",TFW_PATH_PROJECTDS."the_vendor");
+define("TFW_PATH_VENDORDS",TFW_PATH_VENDOR.DIRECTORY_SEPARATOR);
 
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>El Chalán Aruba - Peruvian Cuisine</title>
-    <meta name="description" content="El Chalán in Oranjestad. Peruvian Restaurant in Aruba">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-</head>
-<body>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-98283285-2', 'auto');
-  ga('send', 'pageview');
-</script>
-<div id="divMain" class="container-fluid">
-    <div class="row">
-        <br/>
-    </div>
-    <div class="row">
-        <div class="col-lg-12" style="text-align:center">
-            <a rel="nofollow" target="_blank" href="https://www.facebook.com/elchalan.aruba/"> 
-                <img src="https://scontent-mia3-1.xx.fbcdn.net/v/t1.0-9/17156040_429150724099395_6365602522345009275_n.jpg?oh=5b2f35183c710fac81dd963b390d565c&oe=5A257B32" alt="El Chalán Aruba - Peruvian Restaurant" class="img-responsive center-block" />
-            </a>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-12" style="text-align:center">
-            <br/>
-            <h1 class="display-4">El Chalán in Aruba </h1>
-            <h2 class="display-4">The Best Peruvian Cuisine</h1>
-        </div>
-    </div>
-    <div class="row">
-        <p class="col-lg-4"></p>
-        <p class="col-lg-4" style="text-align: left">
-            <b>Address:</b> Caya G. F. Betico Croes 152, Oranjestad, Aruba <br/>
-            <b>Hours:</b> <br/> 
-            &nbsp;&nbsp;&nbsp;&nbsp;Monday  11:30AM–6PM <br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;Tuesday - Sunday    11:30AM–9PM <br/>
-            <b>Phone:</b> +297 582 7591 <br/>
-            <b>Email:</b> elchalanaruba@gmail.com <br/> 
-            <b>Facebook:</b> https://www.facebook.com/elchalan.aruba <br/>
-            <b>Twitter:</b> https://twitter.com/ELCHALANARUBA <br/><br/>
-            <a href="mailto:elchalanaruba@gmail.com" style="text-align:center">
-                <button class="btn btn-large btn-primary">Contact us</button>
-            </a>
-        </p>
-        <p class="col-lg-4"></p>
-    </div>
-</div>
-<!--elem_footer 1.0.0-->
-<footer class="footer">
-    <div class="container">
-        <ul class="list-inline">
-            <li class="list-inline-item">
-                <a rel="nofollow"  class="btn btn-block" href="/"> 
-                    <span class="fa fa-home"></span>
-                </a>
-            </li>
-            <li class="list-inline-item">
-                <a rel="nofollow"  class="btn btn-block" target="_blank" href="https://www.facebook.com/elchalan.aruba/"> 
-                    <span class="fa fa-facebook-square"></span>
-                </a>
-            </li>            
-            <li class="list-inline-item">
-                <a rel="nofollow"  class="btn btn-block" target="_blank" href="https://twitter.com/ELCHALANARUBA"> 
-                    <span class="fa fa-twitter-square"></span>
-                </a>
-            </li>
-        </ul>
-    </div>
-</footer>
-</body>
-</html>
+$arPaths = [
+    get_include_path(),
+    "$sPathProject",
+    "$sPathProject/the_application",
+    "$sPathProject/the_application/boot",
+    "$sPathProject/the_application/behaviours",
+    "$sPathProject/the_application/components",
+    "$sPathProject/the_application/controllers",
+    "$sPathProject/the_application/helpers",
+    "$sPathProject/the_application/models",
+    "$sPathProject/the_application/views",
+    "$sPathProject/the_application/views/elements",
+    "$sPathProject/the_application/views/reactjs",
+    //VENDOR
+//    "$sPathProject/the_vendor",//tiene el autoload de composer
+//    "$sPathProject/the_vendor/fpdf", se cargara 
+    ];
+foreach($arPaths as $i=>$sPaths)
+    if($i>0)
+    {
+        $sPathFix = realpath($sPaths);
+        $arPaths[$i] = $sPathFix;
+    }
+//var_dump($arPaths);
+$sPathInclude = implode(PATH_SEPARATOR,$arPaths);
+set_include_path($sPathInclude);
+
+require_once "the_vendor/bootstrap.php";//atuload para composer
+require_once "boot/bootstrap.php";//the_application/boot/bootsrap.php
+
+use TheApplication\Components\ComponentRouter;
+$arRun = ComponentRouter::run();
+
+if($arRun)
+{
+    //bug($sPathPublic,"pathpublic");
+    $_POST["tfw_controller"] = $arRun["controller"];
+    $_POST["tfw_method"] = $arRun["method"];
+    
+    $oTfwController = new $arRun["nscontroller"]();
+    if(method_exists($oTfwController,$arRun["method"]))
+        $oTfwController->{$arRun["method"]}();
+    else
+    {
+        die("404");
+    }
+}
