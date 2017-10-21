@@ -16,28 +16,37 @@ use TheApplication\Components\ComponentLog;
 
 class TheApplicationController extends TheFrameworkController
 {
+    protected $oLog;
+    
     public function __construct()
     {
         parent::__construct();
+        $this->oLog = new ComponentLog();
     }
 
     protected function log_debug($sContent,$sTitle="")
     {
         if(!is_string($sContent)) 
             $sContent = var_export($sContent,1);
-        $oLog = new ComponentLog();
-        $oLog->set_subfolder("debug");
-        $oLog->save($sContent,$sTitle);
+        $this->oLog->set_subfolder("debug");
+        $this->oLog->save($sContent,$sTitle);
     }
     
     protected function log_error($sContent,$sTitle="")
     {
         if(!is_string($sContent))
-            $sContent = var_export($sContent,1);        
-        $oLog = new ComponentLog();
-        $oLog->set_subfolder("error");
-        $oLog->save($sContent,$sTitle);
+            $sContent = var_export($sContent,1);
+        $this->oLog->set_subfolder("error");
+        $this->oLog->save($sContent,$sTitle);
     }
+    
+    protected function log_custom($sContent,$sTitle="")
+    {
+        if(!is_string($sContent))
+            $sContent = var_export($sContent,1);
+        $this->oLog->set_subfolder("custom");
+        $this->oLog->save($sContent,$sTitle);
+    }    
     
     public function status_404()
     {

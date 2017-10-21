@@ -4,7 +4,7 @@
  * @link www.eduardoaf.com
  * @name BehaviourSeo
  * @file behaviour_seo.php 
- * @version 1.4.1
+ * @version 1.4.0
  * @date 22-06-2017 20:41 (SPAIN)
  * @observations:
  * @requires
@@ -50,29 +50,14 @@ class BehaviourSeo
                 "
             ],            
             [
-                "url"=>"/versions/"
+                "url"=>"/contact/"
                 ,"title"=>"The Framework PHP Helpers library Versions"
                 ,"description"=>"The Framework PHP Helpers library Versions"
                 ,"keywords"=>"PHP helpers oop classes html versions"
                 ,"h1"=>"<a href=\"/\">The Framework</a> PHP helpers Library Versions",
                 "resume"=>""
             ],
-            [
-                "url"=>"/%%slug%%/examples/"
-                ,"title"=>"Examples of PHP Helper class %%slug%%"
-                ,"description"=>"Examples of The Framework PHP Helper class %%slug%%. Render your html elements using OOP"
-                ,"keywords"=>"PHP helpers oop classes html examples"
-                ,"h1"=>"Examples of PHP Helper class: <b>\"%%classname%%\"</b>",
-                "resume"=>""
-            ],
-            [
-                "url"=>"/%%slug%%/"
-                ,"title"=>"Code of PHP Helper class %%slug%%"
-                ,"description"=>"Code of The Framework PHP Helper class %%slug%%. Render your html elements using OOP"
-                ,"keywords"=>"PHP helpers oop classes html code"
-                ,"h1"=>"Code of PHP Helper class: <b>\"%%classname%%\"</b>",
-                "resume"=>""
-            ],            
+              
         ];
         $this->arData = $arData;
     }//load_data
@@ -92,22 +77,7 @@ class BehaviourSeo
                     ["href"=>"/","description"=>"PHP Helpers"],
                     ["href"=>"/versions/","description"=>"Versions"]
                 ]                
-            ],
-            [
-                "url"=>"/%%slug%%/"
-                ,"scrumbs"=>[
-                    ["href"=>"/","description"=>"PHP Helpers"],
-                    ["href"=>"/%%slug%%/","description"=>"%%classname%% source code"]
-                ]
-            ],    
-            [
-                "url"=>"/%%slug%%/examples/"
-                ,"scrumbs"=>[
-                    ["href"=>"/","description"=>"PHP Helpers"],
-                    ["href"=>"/%%slug%%/","description"=>"%%classname%% source code"],
-                    ["href"=>"/%%slug%%/examples/","description"=>"%%classname%% examples"]
-                ]
-            ],             
+            ],   
         ];
         $this->arScrumbs = $arScrumbs;
     }//load_scrumbs

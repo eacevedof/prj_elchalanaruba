@@ -4,15 +4,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>El Chalán Aruba - Peruvian Cuisine</title>
     <meta name="description" content="El Chalán in Oranjestad. Peruvian Restaurant in Aruba">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 </head>
 <body>
 <?php
@@ -25,10 +22,11 @@ include("elem_analytics.php");
     <div class="row">
         <div class="col-lg-12" style="text-align:center">
             <a rel="nofollow" target="_blank" href="https://www.facebook.com/elchalan.aruba/"> 
-                <img src="https://scontent-mia3-1.xx.fbcdn.net/v/t1.0-9/17156040_429150724099395_6365602522345009275_n.jpg?oh=5b2f35183c710fac81dd963b390d565c&oe=5A257B32" alt="El Chalán Aruba - Peruvian Restaurant" class="img-responsive center-block" />
+                <img src="https://scontent-mia3-1.xx.fbcdn.net/v/t1.0-9/17156040_429150724099395_6365602522345009275_n.jpg?oh=5b2f35183c710fac81dd963b390d565c&oe=5A257B32" alt="El Chalán Aruba - Peruvian Restaurant" class="img-fluid">
             </a>
         </div>
     </div>
+    
     <div class="row">
         <div class="col-lg-12" style="text-align:center">
             <br/>
@@ -36,6 +34,7 @@ include("elem_analytics.php");
             <h2 class="display-4">The Best Peruvian Cuisine</h1>
         </div>
     </div>
+    
     <div class="row">
         <p class="col-lg-4"></p>
         <p class="col-lg-4" style="text-align: left">
@@ -76,5 +75,10 @@ include("elem_analytics.php");
         </ul>
     </div>
 </footer>
+<!--bootstrap-js-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<!--/bootstrap-js-->
 </body>
 </html>
