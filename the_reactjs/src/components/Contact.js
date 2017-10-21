@@ -1,42 +1,29 @@
-//<prj>/the_reactjs/src/components/ProductList.js
+//<prj>/the_reactjs/src/components/Contact.js
 import React from "react";
-import { AcCart } from "../actions/ac_cart"
 import { connect } from "react-redux"
 
-//get_fields,get_dispatchers
-const view_productlist = ({ arProducts, fnAddToCart }) => {
-    console.log("CONTACT.view_productlist.render()")
-    
+import ElementFooter from "./elements/ElementFooter";
+
+const oStyle = {
+    center : {
+        textAlign:"center"
+    },
+    left : {
+        textAlign:"left"
+    }
+}
+
+const view_contact = () => {
     return (
         <div>
-
+            <div className="row">
+                <br/>
+            </div>
+     
+            
+            <ElementFooter/>
         </div>
-    )//render
-}//view_productlist
+    )//return jsx
+}//view_contact
 
-const get_fields = (oState)=>{
-    console.log("CONTACT.get_fields return oStateNew con arProducts")
-    let oStateNew = {
-        arProducts : oState.arProducts
-    }
-    return oStateNew
-}//get_fields
-
-const get_dispatchers = fnDispatch => {
-    console.log("CONTACT.get_dispatchers devuelve oDispatch")
-    let oDispatch = {
-        fnLoadProducts : arProducts => {
-            console.log("CONTACT.get_dispatchers.oDispatch.fnLoadProducts")
-            let oAction = AcProduct.load(arProducts)
-            fnDispatch(oAction)
-        },
-        fnAddToCart : oProduct => {
-            console.log("CONTACT.get_dispatchers.oDispatch.fnAddToCart")
-            let oAction = AcCart.add(oProduct)
-            fnDispatch(oAction)
-        }
-    }
-    return oDispatch
-}//get_dispatchers
-
-export default connect(get_fields,get_dispatchers)(view_productlist);
+export default connect()(view_contact);
