@@ -2,11 +2,11 @@
 import React from "react";
 import { connect } from "react-redux"
 
-const view_footer = (props) => {
+const ElementFooter = (props) => {
     return (
+        /*<!--elem_footer 1.0.0-->*/
         <footer className="footer">
             <div className="container">
-                <span>{props.content}</span>
                 <ul className="list-inline">
                     <li className="list-inline-item">
                         <a rel="nofollow"  className="btn btn-block" href="/"> 
@@ -14,20 +14,20 @@ const view_footer = (props) => {
                         </a>
                     </li>
                     <li className="list-inline-item">
-                        <a rel="nofollow" className="btn btn-block btn-social btn-github" href="https://github.com/eacevedof/prj_phpscheduler"> 
-                            <span className="fa fa-github"></span>
+                        <a rel="nofollow"  className="btn btn-block" target="_blank" href="https://www.facebook.com/elchalan.aruba/"> 
+                            <span className="fa fa-facebook-square"></span>
                         </a>
-                    </li>
+                    </li>            
                     <li className="list-inline-item">
-                        <a rel="nofollow"  href="https://twitter.com/eacevedof" className="btn btn-block btn-social btn-twitter"> 
-                            <span className="fa fa-twitter"></span>
+                        <a rel="nofollow"  className="btn btn-block" target="_blank" href="https://twitter.com/ELCHALANARUBA"> 
+                            <span className="fa fa-twitter-square"></span>
                         </a>
                     </li>
                 </ul>
             </div>
         </footer>
+        /*<!--/elem_footer 1.0.0-->*/
     )//return jsx
-    
-}//view_footer
+}//ElementFooter
 
-export default connect()(view_footer);
+export default connect()(ElementFooter);

@@ -12,5 +12,5 @@ oStore.dispatch(get_promise)
 
 ReactDOM.render(
     <Root store={oStore} />,
-    document.getElementById("root")
+    document.getElementById("divMain")
 );
