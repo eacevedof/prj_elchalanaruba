@@ -1,6 +1,4 @@
 # version 1.0.0 
-# -- logs
-logs/**
 php.ini
 /the_application/models/json/*
 
@@ -78,4 +76,3 @@ Icon
 ._*
 .Spotlight-V100
 .Trashes
-/logs/
