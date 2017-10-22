@@ -1,4 +1,4 @@
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylessheet"/>
 
 <style type="text/css">
 .error-template {padding: 40px 15px;text-align: center;}
