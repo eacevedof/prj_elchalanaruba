@@ -4,7 +4,7 @@
  * @link www.eduardoaf.com
  * @name TheApplication\Controllers\TheApplicationController
  * @file controller_theapplication.php 
- * @version 1.0.0
+ * @version 1.1.0
  * @date 08-10-2017 08:44 (SPAIN)
  * @observations:
  * @requires  
@@ -24,6 +24,13 @@ class TheApplicationController extends TheFrameworkController
         $this->oLog = new ComponentLog();
     }
 
+    public function log_visit($sResult)
+    {
+        $this->oLog->set_subfolder("session");
+        $this->oLog->set_filename("app_visit_".date("Ymd"));
+        $this->oLog->save("uri: {$_SERVER["REQUEST_URI"]}, result: $sResult","session_id: ".session_id());
+    }
+    
     protected function log_debug($sContent,$sTitle="")
     {
         if(!is_string($sContent)) 
