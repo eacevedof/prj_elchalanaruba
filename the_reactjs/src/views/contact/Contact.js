@@ -1,8 +1,9 @@
-//<prj>/the_reactjs/src/components/Contact.js
+//<prj>/the_reactjs/src/views/Contact.js
 import React from "react";
 import { connect } from "react-redux"
 
-import ElementFooter from "./elements/ElementFooter";
+import ElementFooter from "../../elements/ElementFooter";
+import ElementNavbar from "../../elements/ElementNavbar";
 
 const oStyle = {
     center : {
@@ -19,8 +20,7 @@ const view_contact = () => {
             <div className="row">
                 <br/>
             </div>
-     
-            
+            <ElementNavbar/>
             <ElementFooter/>
         </div>
     )//return jsx

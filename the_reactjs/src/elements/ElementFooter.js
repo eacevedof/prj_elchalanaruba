@@ -1,4 +1,4 @@
-//<prj>/the_reactjs/src/components/ElementFooter.js
+//<prj>/the_reactjs/src/elements/ElementFooter.js
 import React from "react";
 import { connect } from "react-redux"
 

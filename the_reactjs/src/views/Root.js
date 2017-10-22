@@ -2,10 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Provider } from 'react-redux'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import App from '../App'
-import Home from './Home'
-import Contact from './Contact'
+import Home from './homes/Home'
+import Contact from './contact/Contact'
+import Dishes from './contact/Contact'
 import Status404 from './status/Status404'
+
 
 const Root = ({ store }) => (
     <Provider store={store}>
@@ -13,6 +14,7 @@ const Root = ({ store }) => (
             <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/contact/" component={Contact} />
+                <Route exact path="/dishes/" component={Dishes} />
                 <Route path="*" component={Status404} />
             </Switch>
         </BrowserRouter>

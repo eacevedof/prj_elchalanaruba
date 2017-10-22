@@ -1,7 +1,7 @@
-//<prj>/the_reactjs/src/components/Status404.js
+//<prj>/the_reactjs/src/views/Status404.js
 import React from "react";
 import { connect } from "react-redux"
-import ElementFooter from "../elements/ElementFooter";
+import ElementFooter from "../../elements/ElementFooter";
 import "./Status.css"
 
 const view_contact = () => {

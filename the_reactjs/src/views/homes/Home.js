@@ -1,8 +1,9 @@
-//<prj>/the_reactjs/src/components/Home.js
+//<prj>/the_reactjs/src/views/Home.js
 import React from "react";
 import { connect } from "react-redux"
 
-import ElementFooter from "./elements/ElementFooter";
+import ElementFooter from "../../elements/ElementFooter";
+import ElementNavbar from "../../elements/ElementNavbar";
 
 const oStyle = {
     center : {
@@ -16,9 +17,11 @@ const oStyle = {
 const view_home = (props) => {
     return (
         <div>
+
             <div className="row">
                 <br/>
             </div>
+            <ElementNavbar/>
             <div className="row">
                 <div className="col-lg-12" style={oStyle.center}>
                     <a rel="nofollow" target="_blank" href="https://www.facebook.com/elchalan.aruba/"> 
