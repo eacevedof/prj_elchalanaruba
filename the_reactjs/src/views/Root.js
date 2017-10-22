@@ -1,3 +1,4 @@
+//<project>/the_reactjs/src/views/Root.js 1.0.0
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Provider } from 'react-redux'
