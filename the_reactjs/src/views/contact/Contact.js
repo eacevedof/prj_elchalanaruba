@@ -17,10 +17,10 @@ const oStyle = {
 const view_contact = () => {
     return (
         <div>
+            
             <div className="row">
                 <br/>
             </div>
-            <ElementNavbar/>
             <ElementFooter/>
         </div>
     )//return jsx

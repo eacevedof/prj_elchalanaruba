@@ -8,7 +8,6 @@ import Contact from './contact/Contact'
 import Dishes from './contact/Contact'
 import Status404 from './status/Status404'
 
-
 const Root = ({ store }) => (
     <Provider store={store}>
         <BrowserRouter>

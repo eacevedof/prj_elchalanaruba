@@ -2,8 +2,8 @@
 import React from "react";
 import { connect } from "react-redux"
 
-import ElementFooter from "../../elements/ElementFooter";
 import ElementNavbar from "../../elements/ElementNavbar";
+import ElementFooter from "../../elements/ElementFooter";
 
 const oStyle = {
     center : {
@@ -21,7 +21,7 @@ const view_home = (props) => {
             <div className="row">
                 <br/>
             </div>
-            <ElementNavbar/>
+    
             <div className="row">
                 <div className="col-lg-12" style={oStyle.center}>
                     <a rel="nofollow" target="_blank" href="https://www.facebook.com/elchalan.aruba/"> 

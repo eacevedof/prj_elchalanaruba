@@ -1,5 +1,5 @@
 //<prj>/the_reactjs/src/elements/ElementFooter.js
-import React from "react";
+import React from "react"
 import { connect } from "react-redux"
 
 const ElementFooter = (props) => {
