@@ -25,4 +25,10 @@ class ControllerHomes extends TheApplicationController
     {
         include("views/homes/view_index.php");
     }
+    
+    public function sqlite()
+    {
+        $oSqlite = new \TheApplication\Components\ComponentSqlite();
+        $oSqlite->query("");
+    }
 }//ControllerHomes
