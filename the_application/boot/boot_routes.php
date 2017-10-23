@@ -1,5 +1,6 @@
 <?php
-//pr("boot_routes.php 1.0.1");
+//<project>/the_application/boot/boot_routes.php 1.0.0
 use \TheApplication\Components\ComponentRouter as R;
 
+R::add("/sqlite/","Homes");
 R::add("/contact/","Contact");
