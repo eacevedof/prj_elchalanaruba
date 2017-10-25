@@ -2,14 +2,14 @@
 /**
  * @author Eduardo Acevedo Farje.
  * @link www.eduardoaf.com
- * @name TheApplication\Components\ComponentSqlserver 
- * @file component_sqlserver.php v1.0.1
+ * @name TheApplication\Components\ComponentDbSqlserver 
+ * @file component_db_sqlserver.php v1.0.1
  * @date 19-09-2017 04:56 SPAIN
  * @observations
  */
 namespace TheApplication\Components;
 
-class ComponentSqlserver 
+class ComponentDbSqlserver 
 {
 
     public function query()
@@ -40,7 +40,7 @@ class ComponentSqlserver
         }
     }
     
-}//ComponentSqlserver
+}//ComponentDbSqlserver
 
 
 /*include("DB.php");
