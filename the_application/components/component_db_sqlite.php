@@ -25,4 +25,11 @@ class ComponentDbSqlite
         }        
     }
     
+    public function insert($sSQL)
+    {
+        $sPath = TFW_PATH_APPLICATIONDS."db";        
+        $dir = "sqlite:$sPath/app.db";
+        $dbh  = new \PDO($dir);
+        $dbh->query($sSQL);
+    }
 }//ComponentDbSqlite

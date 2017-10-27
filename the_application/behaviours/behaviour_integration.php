@@ -51,7 +51,7 @@ class BehaviourIntegration
         return $arRows;
     }
     
-    private function get_mysql_fields($sTable)
+    private function get_mysql_fields($sTable,$isMin=0)
     {
         $sSQL = "
         SELECT LOWER(column_name) AS field_name
@@ -61,12 +61,23 @@ class BehaviourIntegration
             ELSE ''
         END AS is_pk
         ,LOWER(IS_NULLABLE) AS is_nullable
+        ,COLUMN_DEFAULT AS by_default
         ,character_maximum_length AS field_length
         FROM information_schema.columns 
         WHERE 1=1
         AND table_name = '$sTable'
         AND table_schema='{$this->arConfig["mysql"]["db"]}'
         ORDER BY ordinal_position ASC";
+        
+        if($isMin)
+            $sSQL = "
+            SELECT LOWER(column_name) AS field_name
+            FROM information_schema.columns 
+            WHERE 1=1
+            AND table_name = '$sTable'
+            AND table_schema='{$this->arConfig["mysql"]["db"]}'
+            ORDER BY ordinal_position ASC";
+        
         $arRows = $this->oMysql->query($sSQL);
         return $arRows;        
     }
@@ -86,29 +97,99 @@ class BehaviourIntegration
         foreach($arTables as $arTable)
         {
             $sTable = $arTable["table_name"];
-            $arLite[]="CREATE TABLE $sTable (";
+            $arLite[] = "DROP TABLE IF EXISTS $sTable;";
+            $arLite[] = "CREATE TABLE $sTable (";
             $arFields = $this->get_mysql_fields($sTable);
-            foreach ($arFields as $arProp)
+            $arEndField = end($arFields);
+            foreach ($arFields as $arField)
             {
-                $sField = $arProp["field_name"];
-                $sFieldType = $this->get_type_tr($arProp["field_type"],"mysql","sqlite");
-                $isPk = $arProp["is_pk"];
+                $sField = $arField["field_name"];
+                $sFieldType = $this->get_type_tr($arField["field_type"],"mysql","sqlite");
+                if(is_array($sFieldType))
+                {
+                    bug($arField);
+                    pr($sFieldType);
+                    die();
+                }
+                $isPk = $arField["is_pk"];
                 if($isPk) 
                 {
-                    $isPk="PRIMARY KEY";
-                    $arLite[] = "$sField $sFieldType $isPk,";
+                    $isPk="PRIMARY KEY ";
                 }
                 else 
                 {
-                    $isNullable=$arProp["is_nullable"];
-                    if($isNullable=="yes")
-                        $isPk = "NOT NULL";
-                    
-                    $arLite[] = "$sField $sFieldType $isPk,";                
+                    $isNullable=$arField["is_nullable"];
+                    if($isNullable=="no")
+                        $isPk = "NOT NULL ";            
                 }
-            }           
+                $sLite = "$sField $sFieldType $isPk";
+                if($arField["by_default"])
+                    $sLite .= "DEFAULT '{$arField["by_default"]}'";
+                
+                if($arField!==$arEndField) $sLite .= ",";
+                $arLite[] = $sLite;
+            }//foreach
+            $arLite[]=");";
         }
-        bug($arLite);
+        $sLite = implode("\n", $arLite);
+        echo $sLite;
+    }//get_lite_schema
+    
+    public function get_lite_inserts()
+    {
+        $arTables = $this->get_mysql_tables();
+        //pr($arTables);die;
+        $arLite = [];
+        foreach($arTables as $arTable)
+        {
+            $sTable = $arTable["table_name"];
+            if(strstr($sTable,"vapp")) continue;
+
+            $arFields = $this->get_mysql_fields($sTable,1);
+            $arSelect = [];
+            foreach($arFields as $arField)
+                $arSelect[] = $arField["field_name"];
+
+            $sOrderBy = "1";
+            if(in_array("id",$arSelect)) $sOrderBy = "id";
+            if(in_array("idn",$arSelect)) $sOrderBy = "idn";
+            
+            $sSelect = implode("`,`",$arSelect);
+            $sSelect = "`$sSelect`";
+            
+            $sSQL = "SELECT $sSelect FROM $sTable ORDER BY $sOrderBy ASC";
+            //bug($sSQL);
+            $arRows = $this->oMysql->query($sSQL);
+            if($arRows)
+            {
+                $arLite[] = "DELETE FROM $sTable;";
+                $arLite[] = "INSERT INTO $sTable ($sSelect)"; 
+                $arLite[] = " VALUES";
+                
+                $sInsert = "";
+                $arEnd = end($arRows);
+                foreach($arRows as $arRow)
+                {
+                    $sInsert = "(";
+                    $arIns = [];
+                    foreach($arSelect as $sField)
+                    {
+                        $sValue = $arRow[$sField];
+                        $sValue = str_replace("'","''",$sValue);
+                        $arIns[] = "'$sValue'";
+                    }
+                    $sInsert.= implode(",",$arIns);
+                    $sInsert .= ")";
+                    if($arEnd==$arRow) $sInsert .= ";";
+                    else $sInsert .= ",";
+                    
+                    $arLite[] = $sInsert;
+                }//foreach
+            }//if arRows
+        }//foreach tables
+        $sLite = implode("\n",$arLite);
+        echo "<pre>";
+        echo $sLite;        
     }
     
     private function get_type_tr($sType,$sMotorSrc,$sMotorTrg)
@@ -146,7 +227,12 @@ class BehaviourIntegration
                 "decimal"=>[
                     "sqlite"=>"REAL",
                     "sqlserver"=>"NUMERIC"
+                ],
+                "float"=>[
+                    "sqlite"=>"REAL",
+                    "sqlserver"=>"NUMERIC"
                 ]
+                
             ]
         ];
         return isset($arTypes[$sMotorSrc][$sType][$sMotorTrg])?$arTypes[$sMotorSrc][$sType][$sMotorTrg]:[];

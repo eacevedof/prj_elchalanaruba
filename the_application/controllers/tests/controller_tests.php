@@ -30,6 +30,7 @@ class ControllerTests extends TheApplicationController
         $arConfig["mysql"]["server"] = "localhost";
         
         $oInteg = new BehaviourIntegration($arConfig);
-        $oInteg->get_lite_schema();
+        //$oInteg->get_lite_schema();
+        $oInteg->get_lite_inserts();
     }
 }//ControllerTests
