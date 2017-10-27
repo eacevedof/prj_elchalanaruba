@@ -15,7 +15,7 @@ class ComponentDbMysql
     private $sDbUser;
     private $sDbPassword;
     private $sDbName;
-    private $oConn;
+    private static $oConn;
     private $arMessages;
 
 
@@ -41,8 +41,10 @@ class ComponentDbMysql
     {
         try
         {
-            $this->oConn = mysqli_connect($this->sDbServer
-                ,$this->sDbUser, $this->sDbPassword, $this->sDbName);
+            if(!mysqli_ping(self::$oConn))
+                self::$oConn = mysqli_connect($this->sDbServer
+                    ,$this->sDbUser, $this->sDbPassword, $this->sDbName);
+            
             if(mysqli_connect_errno())
                 $this->arMessages["error"][] = "conn_open.mysqli_connect error:".mysqli_connect_error();
         }
@@ -54,16 +56,16 @@ class ComponentDbMysql
     
     private function conn_close()
     {
-        if($this->oConn)
-            mysqli_close($this->oConn);
+        if(mysqli_ping(self::$oConn))
+            mysqli_close(self::$oConn);
     }
     
     public function query($sSQL)
     {
         $this->conn_open();
-        if($this->oConn)
+        if(self::$oConn)
         {
-            $iResult = mysqli_query($this->oConn,$sSQL);
+            $iResult = mysqli_query(self::$oConn,$sSQL);
         }
         $this->conn_close();   
     }
