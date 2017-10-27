@@ -1,5 +1,5 @@
 <?php
-//<prj>/the_application/boot/fn_autoload.php 1.1.1
+//<prj>/the_application/boot/fn_autoload.php 1.2.0
 spl_autoload_register(function($sNSClassName)
 {
     //bug($sNSClassName,"boot/autoload.php.sNSClassName:");
@@ -23,6 +23,7 @@ spl_autoload_register(function($sNSClassName)
     
     //bug($sTypeof,"typeof");
     $sClassOriginal = end($arPieces);
+    $arFiles["cameltosep"] = camel_to_sep($sClassOriginal).".php";
     $arFiles["originalclass"] = "$sClassOriginal.php";
     $sClassOrigLower = strtolower($sClassOriginal);
     $arFiles["originalfile"] = "$sClassOrigLower.php";
