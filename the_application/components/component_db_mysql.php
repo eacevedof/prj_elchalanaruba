@@ -18,6 +18,8 @@ class ComponentDbMysql
     private static $oConn;
     private $arMessages;
 
+    private $oMysqli;
+    private $oResult;
 
     public function __construct($sDbName,$sDbUser="root",$sDbPass,$sDbServer="localhost") 
     {
@@ -39,14 +41,18 @@ class ComponentDbMysql
     
     private function conn_open()
     {
+        if(!$this->is_configok())
+        {
+            $this->arMessages["error"][] = "conn_open.error in config";
+            return -1;
+        }
         try
         {
-            if(!mysqli_ping(self::$oConn))
-                self::$oConn = mysqli_connect($this->sDbServer
+            self::$oConn = new \mysqli($this->sDbServer
                     ,$this->sDbUser, $this->sDbPassword, $this->sDbName);
             
-            if(mysqli_connect_errno())
-                $this->arMessages["error"][] = "conn_open.mysqli_connect error:".mysqli_connect_error();
+            if(self::$oConn->connect_error)
+                $this->arMessages["error"][] = "conn_open.mysqli_connect error:".self::$oConn->connect_error();
         }
         catch (mysqli_sql_exception $oE)
         {
@@ -56,7 +62,7 @@ class ComponentDbMysql
     
     private function conn_close()
     {
-        if(mysqli_ping(self::$oConn))
+        if(mysqli::ping(self::$oConn))
             mysqli_close(self::$oConn);
     }
     
