@@ -190,7 +190,66 @@ class BehaviourIntegration
         $sLite = implode("\n",$arLite);
         echo "<pre>";
         echo $sLite;        
-    }
+    }//get_lite_inserts
+    
+    public function bulk_lite_insert()
+    {
+        $arTables = $this->get_mysql_tables();
+        //pr($arTables);die;
+        $arLite = [];
+        foreach($arTables as $arTable)
+        {
+            $sTable = $arTable["table_name"];
+            if(strstr($sTable,"vapp")) continue;
+
+            $arFields = $this->get_mysql_fields($sTable,1);
+            $arSelect = [];
+            foreach($arFields as $arField)
+                $arSelect[] = $arField["field_name"];
+
+            $sOrderBy = "1";
+            if(in_array("id",$arSelect)) $sOrderBy = "id";
+            if(in_array("idn",$arSelect)) $sOrderBy = "idn";
+            
+            $sSelect = implode("`,`",$arSelect);
+            $sSelect = "`$sSelect`";
+            
+            $sSQL = "SELECT $sSelect FROM $sTable ORDER BY $sOrderBy ASC";
+            //bug($sSQL);
+            $arRows = $this->oMysql->query($sSQL);
+            if($arRows)
+            {
+                $oLite = new ComponentDbSqlite();
+                $sSQL = "DELETE FROM $sTable;";
+                $oLite->insert($sSQL);
+                $arLite[] = "INSERT INTO $sTable ($sSelect)"; 
+                $arLite[] = " VALUES";
+                
+                $sInsert = "";
+                $arEnd = end($arRows);
+                foreach($arRows as $arRow)
+                {
+                    $sInsert = "(";
+                    $arIns = [];
+                    foreach($arSelect as $sField)
+                    {
+                        $sValue = $arRow[$sField];
+                        $sValue = str_replace("'","''",$sValue);
+                        $arIns[] = "'$sValue'";
+                    }
+                    $sInsert.= implode(",",$arIns);
+                    $sInsert .= ")";
+                    if($arEnd==$arRow) $sInsert .= ";";
+                    else $sInsert .= ",";
+                    
+                    $arLite[] = $sInsert;
+                }//foreach
+            }//if arRows
+        }//foreach tables
+        $sLite = implode("\n",$arLite);
+        echo "<pre>";
+        echo $sLite;        
+    }//get_lite_inserts    
     
     private function get_type_tr($sType,$sMotorSrc,$sMotorTrg)
     {
