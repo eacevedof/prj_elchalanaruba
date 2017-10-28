@@ -1,7 +1,8 @@
 <?php
-//index.php 2.2.0
+//index.php 2.3.0
 //carga el loader de composer. Este loader solo tiene registrado el loader de helpers.
 //<project>\the_public\index.php
+ini_set("max_execution_time",3600);
 session_start();
 ob_start();
 $sPathPublic = dirname(__FILE__);
