@@ -199,10 +199,14 @@ class BehaviourIntegration
             pr($this->oSqlite->get_errors(),"arErrors");
 
         pr($this->oSqlite->get_debug(),"debug schema");
+        
+        $this->oSqlite->reset_errors();
         $sSQLInsert = $this->get_lite_inserts();
         $this->oSqlite->execute($sSQLInsert);
         if($this->oSqlite->is_error())
             pr($this->oSqlite->get_errors(),"arErrors");
+        
+        print_r($sSQLInsert);
     }//bulk_lite_schema
     
     public function bulk_lite_insert()
