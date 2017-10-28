@@ -3,7 +3,7 @@
  * @author Eduardo Acevedo Farje.
  * @link www.eduardoaf.com
  * @name TheApplication\Components\ComponentDbSqlite 
- * @file component_db_sqlite.php v1.0.2
+ * @file component_db_sqlite.php v2.0.0
  * @date 19-09-2017 04:56 SPAIN
  * @observations
  */
@@ -32,6 +32,7 @@ class ComponentDbSqlite
         
         if(!$this->sPathFolder) $this->sPathFolder = TFW_PATH_APPLICATIONDS."appdb";
         if(!$this->sDbName) $this->sDbName = "app.sqlite3";
+        $this->isPersistent = FALSE;
     }
 
     private function is_configok()
@@ -46,25 +47,26 @@ class ComponentDbSqlite
     {
         //pathfile
         $this->set_pathfile();
-        
         if(!$this->is_configok())
         {
             $sMessage= "conn_open.error in config. Db:$this->sPathFile";
             $this->add_message($sMessage);
+            return;
         }
+        //data source name
+        $sDSN = "sqlite:$this->sPathFile";
         try
         {
-            //data source name
-            $sDSN = "sqlite:$this->sPathFile";
             //pr($sDSN,"DSN");
             self::$oPDO  = new \PDO($sDSN);
+            self::$oPDO->setAttribute(\PDO::ATTR_TIMEOUT,3600);
         }
         catch (\PDOException $oE)
         {
             $sMessage = "PDO Exception: DSN:$sDSN, message:".$oE->getMessage();
             $this->add_message($sMessage);
         }
-    }
+    }//conn_open
     
     public function execute($sSQL)
     {
@@ -95,7 +97,7 @@ class ComponentDbSqlite
             $this->add_message($sMessage);
         }
         return $isAffected;
-    }//query
+    }//execute
     
     public function query($sSQL)
     {
@@ -124,10 +126,7 @@ class ComponentDbSqlite
         return [];
     }//query
     
-    public function conn_close()
-    {
-        self::$oPDO = NULL;
-    }
+    public function conn_close(){if(!$this->isPersistent)self::$oPDO = NULL;}
     
     private function add_message($sMessage,$sType="error")
     {
@@ -138,9 +137,6 @@ class ComponentDbSqlite
     
     private function set_pathfile()
     {
-        //$this->sPathFile = $this->sPathFolder.self::DS.$this->sDbName;
-        //$this->sPathFile = $this->sPathFolder."/".$this->sDbName;
-        //$this->sPathFile = realpath($this->sPathFile);
         $this->sPathFile = realpath($this->sPathFolder.self::DS.$this->sDbName);
     }
     
