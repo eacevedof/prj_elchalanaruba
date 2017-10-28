@@ -11,15 +11,43 @@ namespace TheApplication\Components;
 
 class ComponentDbSqlite 
 {
+    private static $oConn;
     private $sPathFolder;
     private $sDbName;
     
+    private $isError;
+    private $isPersistent;
+    
     public function __construct($sPathFolder="",$sDbName="") 
     {
-        ;
+        $this->sPathFolder = $sPathFolder;
+        $this->sDbName = $sDbName;
     }
 
-
+    public function query($sSQL)
+    {
+        if(trim($sSQL))
+        {
+            $this->conn_open();
+            if(self::$oConn->ping())
+            {
+                $oResult = self::$oConn->query($sSQL);
+                $arRows = [];
+                while($arRow = $oResult->fetch_assoc()) 
+                    $arRows[] = $arRow;
+                $oResult->free();
+                return $arRows;
+            }
+            $this->conn_close();   
+        }
+        else 
+        {
+            $sMessage = "query.sql empty";
+            $this->add_message($sMessage);
+        }
+        return [];
+    }//query
+    
     public function query($sSQL)
     {
         
@@ -40,4 +68,11 @@ class ComponentDbSqlite
         $dbh  = new \PDO($dir);
         $dbh->query($sSQL);
     }
+    
+    private function add_message($sMessage,$sType="error")
+    {
+        if($sType="error")
+            $this->isError = TRUE;
+        $this->arMessages[$sType][] = $sMessage;
+    }    
 }//ComponentDbSqlite
