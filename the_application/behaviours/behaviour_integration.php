@@ -194,11 +194,12 @@ class BehaviourIntegration
     public function bulk_lite_schema()
     {
         $sSQLSchema = $this->get_lite_schema();
-        $isOk=$this->oSqlite->execute($sSQLSchema);
-        
-        bug($isOk,"lite.execute");
-        if(!$isOk || $this->oSqlite->is_error())
-            pr($this->oSqlite->get_errors());
+        //pr($sSQLSchema);die;
+        $this->oSqlite->execute($sSQLSchema);
+        if($this->oSqlite->is_error())
+            pr($this->oSqlite->get_errors(),"arErrors");
+
+        pr($this->oSqlite->get_debug(),"debug");
     }
     
     public function bulk_lite_insert()

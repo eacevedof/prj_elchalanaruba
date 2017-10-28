@@ -21,6 +21,7 @@ class ComponentDbSqlite
     
     private $isError;
     private $isPersistent;
+    private $iRowsAffected;
     
     const DS = DIRECTORY_SEPARATOR;
     
@@ -67,7 +68,7 @@ class ComponentDbSqlite
     
     public function execute($sSQL)
     {
-        $isOk = FALSE;
+        $isAffected = FALSE;
         
         if(trim($sSQL))
         {
@@ -77,12 +78,13 @@ class ComponentDbSqlite
                 
                 if($this->is_noterror())
                 {
-                    $isOk = self::$oPDO->exec($sSQL);
-                    if(!$isOk)
+                    $this->iRowsAffected = self::$oPDO->exec($sSQL);
+                    if($this->iRowsAffected===FALSE)
                     {
                         $this->add_message("ERROR: PDO->exec(SQL)");
                         $this->add_message($sSQL);
                     }
+                    $this->add_message("execute: rowsaffected:$this->iRowsAffected","debug");
                     $this->conn_close();
                 }//if not error
             }//if not error
@@ -92,7 +94,7 @@ class ComponentDbSqlite
             $sMessage = "execute.sql empty";
             $this->add_message($sMessage);
         }
-        return $isOk;
+        return $isAffected;
     }//query
     
     public function query($sSQL)
@@ -148,5 +150,6 @@ class ComponentDbSqlite
     public function get_errors(){return isset($this->arMessages["error"])?$this->arMessages["error"]:[];}     
     private function is_noterror(){return !$this->isError;}
     public function is_error(){return $this->isError;}
+    public function get_debug(){return isset($this->arMessages["debug"])?$this->arMessages["debug"]:[];}     
     
 }//ComponentDbSqlite
