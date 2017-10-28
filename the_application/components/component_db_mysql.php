@@ -72,7 +72,7 @@ class ComponentDbMysql
     
     private function add_message($sMessage,$sType="error")
     {
-        if($sType="error")
+        if($sType==="error")
             $this->isError = TRUE;
         $this->arMessages[$sType][] = $sMessage;
     }

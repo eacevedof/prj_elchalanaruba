@@ -85,7 +85,6 @@ class ComponentDbSqlite
                         $this->add_message("ERROR: PDO->exec(SQL)");
                         $this->add_message($sSQL);
                     }
-                    $this->add_message("execute: rowsaffected:$this->iAffectedRows","debug");
                     $this->conn_close();
                 }//if not error
             }//if not error
@@ -128,7 +127,7 @@ class ComponentDbSqlite
     
     private function add_message($sMessage,$sType="error")
     {
-        if($sType="error")
+        if($sType==="error")
             $this->isError = TRUE;
         $this->arMessages[$sType][] = $sMessage;
     }  

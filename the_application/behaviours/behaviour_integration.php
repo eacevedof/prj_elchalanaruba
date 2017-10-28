@@ -198,8 +198,6 @@ class BehaviourIntegration
         $this->oSqlite->execute($sSQLSchema);
         if($this->oSqlite->is_error())
             pr($this->oSqlite->get_errors(),"arErrors");
-
-        pr($this->oSqlite->get_debug(),"debug schema");
         
         $this->oSqlite->reset_errors();
         $arInserts = $this->get_lite_inserts();
@@ -207,9 +205,14 @@ class BehaviourIntegration
         foreach($arInserts as $i=>$sSQL)
         {
             $this->oSqlite->execute($sSQL);
-            $oLog->save($sSQL,$this->oSqlite->get_affected_rows());
+            $oLog->set_subfolder("debug");
+            $oLog->save($sSQL,"/*insert $i, affected {$this->oSqlite->get_affected_rows()}*/");
             if($this->oSqlite->is_error())
-                pr($this->oSqlite->get_errors(),"arErrors $i");
+            {
+                $oLog->set_subfolder("errors");
+                $oLog->save($sSQL,"/*insert $i*/");
+                pr($this->oSqlite->get_errors(),"arError on insert $i");
+            }
             $this->oSqlite->reset_errors();
         }
     }//bulk_lite_schema
