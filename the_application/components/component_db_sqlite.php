@@ -11,11 +11,19 @@ namespace TheApplication\Components;
 
 class ComponentDbSqlite 
 {
+    private $sPathFolder;
+    private $sDbName;
+    
+    public function __construct($sPathFolder="",$sDbName="") 
+    {
+        ;
+    }
+
 
     public function query($sSQL)
     {
         
-        $sPath = TFW_PATH_APPLICATIONDS."db";
+        $sPath = TFW_PATH_APPLICATIONDS."dbapp";
         $dir = "sqlite:$sPath/app.db";
         $dbh  = new \PDO($dir) or die("cannot open the database");
         $query =  "select * from _template";
