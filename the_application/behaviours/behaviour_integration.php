@@ -13,7 +13,7 @@ namespace TheApplication\Behaviours;
 
 use TheApplication\Components\ComponentDbMysql;
 use TheApplication\Components\ComponentDbSqlite;
-use TheApplication\Components\ComponentDbSqlserver;
+//use TheApplication\Components\ComponentDbSqlserver;
 use TheApplication\Components\ComponentLog;
 
 class BehaviourIntegration
@@ -135,7 +135,7 @@ class BehaviourIntegration
         return $sSQLSchema;
     }//get_lite_schema
     
-    public function get_lite_inserts()
+    public function get_lite_insert()
     {
         $arTables = $this->get_mysql_tables();
         //pr($arTables);die;
@@ -202,14 +202,16 @@ class BehaviourIntegration
         pr($this->oSqlite->get_debug(),"debug schema");
         
         $this->oSqlite->reset_errors();
-        $sSQLInsert = $this->get_lite_inserts();
+        $arInserts = $this->get_lite_inserts();
         $oLog = new ComponentLog();
-        $oLog->save($sSQLInsert,"bulk insert");
-        $this->oSqlite->execute($sSQLInsert);
-        if($this->oSqlite->is_error())
-            pr($this->oSqlite->get_errors(),"arErrors");
-        
-        //print_r($sSQLInsert);
+        foreach($arInserts as $i=>$sSQL)
+        {
+            $this->oSqlite->execute($sSQL);
+            $oLog->save($sSQL,$this->oSqlite->get_affected_rows());
+            if($this->oSqlite->is_error())
+                pr($this->oSqlite->get_errors(),"arErrors $i");
+            $this->oSqlite->reset_errors();
+        }
     }//bulk_lite_schema
     
     public function bulk_lite_insert()
@@ -269,6 +271,55 @@ class BehaviourIntegration
         $sLite = implode("\n",$arLite);
         return $sLite;        
     }//bulk_lite_insert    
+    
+    private function get_lite_inserts()
+    {
+        $arTables = $this->get_mysql_tables();
+        //pr($arTables);die;
+        $arLite = [];
+        foreach($arTables as $arTable)
+        {
+            $sTable = $arTable["table_name"];
+            if(strstr($sTable,"vapp")) continue;
+
+            $arFields = $this->get_mysql_fields($sTable,1);
+            $arSelect = [];
+            foreach($arFields as $arField)
+                $arSelect[] = $arField["field_name"];
+
+            $sOrderBy = "1";
+            if(in_array("id",$arSelect)) $sOrderBy = "id";
+            if(in_array("idn",$arSelect)) $sOrderBy = "idn";
+            
+            $sSelect = implode("`,`",$arSelect);
+            $sSelect = "`$sSelect`";
+            
+            $sSQL = "SELECT $sSelect FROM $sTable ORDER BY $sOrderBy ASC";
+            //bug($sSQL);
+            $arRows = $this->oMysql->query($sSQL);
+            if($arRows)
+            {
+                $arLite[] = "DELETE FROM $sTable;";
+                $sInsert = "";
+                foreach($arRows as $i=>$arRow)
+                {
+                    $sInsert = "(";
+                    $arValues = [];
+                    foreach($arSelect as $sField)
+                    {
+                        $sValue = $arRow[$sField];
+                        $sValue = str_replace("'","''",$sValue);
+                        $arValues[] = "'$sValue'";
+                    }
+                    $sInsert.= implode(",",$arValues);
+                    $sInsert .= ");";
+                    $arLite[] = "/*$i*/ INSERT INTO $sTable ($sSelect) VALUES $sInsert"; 
+                }//foreach
+            }//if arRows
+        }//foreach tables
+
+        return $arLite;   
+    }//bulk_lite_insert 
     
     private function get_type_tr($sType,$sMotorSrc,$sMotorTrg)
     {
