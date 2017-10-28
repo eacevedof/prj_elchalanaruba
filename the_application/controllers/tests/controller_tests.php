@@ -35,6 +35,6 @@ class ControllerTests extends TheApplicationController
         $oInteg = new BehaviourIntegration($arConfig);
         //$oInteg->get_lite_schema();
         //$oInteg->get_lite_inserts();
-        $oInteg->bulk_lite_schema();
+        $oInteg->to_sqlite();
     }
 }//ControllerTests

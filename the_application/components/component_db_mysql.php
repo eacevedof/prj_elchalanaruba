@@ -11,6 +11,9 @@ namespace TheApplication\Components;
 
 class ComponentDbMysql 
 {
+    /**
+     * @var mysqli
+     */
     private static $oConn;    
     private $sDbServer;
     private $sDbUser;
@@ -53,6 +56,7 @@ class ComponentDbMysql
             self::$oConn = new \mysqli($this->sDbServer
                     ,$this->sDbUser, $this->sDbPassword, $this->sDbName);
             //bug(self::$oConn);
+            self::$oConn->set_charset("utf8mb4");
             if(self::$oConn->connect_error)
             {
                 $sMessage = "conn_open.mysqli_connect error:".self::$oConn->connect_error();

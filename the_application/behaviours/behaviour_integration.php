@@ -4,7 +4,7 @@
  * @link www.eduardoaf.com
  * @name BehaviourIntegration
  * @file behaviour_integration.php 
- * @version 1.0.0
+ * @version 1.0.1
  * @date 22-06-2017 20:41 (SPAIN)
  * @observations:
  * @requires
@@ -187,11 +187,10 @@ class BehaviourIntegration
             }//if arRows
         }//foreach tables
         $sLite = implode("\n",$arLite);
-        echo "<pre>";
-        echo $sLite;        
+        return $sLite;      
     }//get_lite_inserts
     
-    public function bulk_lite_schema()
+    public function to_sqlite()
     {
         $sSQLSchema = $this->get_lite_schema();
         //pr($sSQLSchema);die;
@@ -199,8 +198,12 @@ class BehaviourIntegration
         if($this->oSqlite->is_error())
             pr($this->oSqlite->get_errors(),"arErrors");
 
-        pr($this->oSqlite->get_debug(),"debug");
-    }
+        pr($this->oSqlite->get_debug(),"debug schema");
+        $sSQLInsert = $this->get_lite_inserts();
+        $this->oSqlite->execute($sSQLInsert);
+        if($this->oSqlite->is_error())
+            pr($this->oSqlite->get_errors(),"arErrors");
+    }//bulk_lite_schema
     
     public function bulk_lite_insert()
     {
@@ -257,9 +260,8 @@ class BehaviourIntegration
             }//if arRows
         }//foreach tables
         $sLite = implode("\n",$arLite);
-        echo "<pre>";
-        echo $sLite;        
-    }//get_lite_inserts    
+        return $sLite;        
+    }//bulk_lite_insert    
     
     private function get_type_tr($sType,$sMotorSrc,$sMotorTrg)
     {

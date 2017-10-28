@@ -32,7 +32,7 @@ class ComponentDbSqlite
         
         if(!$this->sPathFolder) $this->sPathFolder = TFW_PATH_APPLICATIONDS."appdb";
         if(!$this->sDbName) $this->sDbName = "app.sqlite3";
-        $this->isPersistent = FALSE;
+        $this->isPersistent = TRUE;
     }
 
     private function is_configok()
@@ -54,7 +54,7 @@ class ComponentDbSqlite
             return;
         }
         //data source name
-        $sDSN = "sqlite:$this->sPathFile";
+        $sDSN = "sqlite:$this->sPathFile,charset=utf8mb4";
         try
         {
             //pr($sDSN,"DSN");
@@ -77,7 +77,6 @@ class ComponentDbSqlite
             if($this->is_noterror())
             {
                 $this->conn_open();
-                
                 if($this->is_noterror())
                 {
                     $this->iRowsAffected = self::$oPDO->exec($sSQL);
@@ -106,15 +105,14 @@ class ComponentDbSqlite
             if($this->is_noterror())
             {
                 $this->conn_open();
-                
                 if($this->is_noterror())
                 {
                     if(self::$oPDO)
                     {
                         $arRows = self::$oPDO->query($sSQL);
+                        $this->conn_close();                        
                         return $arRows;
                     }
-                    $this->conn_close();
                 }//if not error
             }//if not error
         }
@@ -146,6 +144,7 @@ class ComponentDbSqlite
     public function get_errors(){return isset($this->arMessages["error"])?$this->arMessages["error"]:[];}     
     private function is_noterror(){return !$this->isError;}
     public function is_error(){return $this->isError;}
-    public function get_debug(){return isset($this->arMessages["debug"])?$this->arMessages["debug"]:[];}     
+    public function get_debug(){return isset($this->arMessages["debug"])?$this->arMessages["debug"]:[];}  
+    public function reset_errors(){$this->arMessages["error"]=[];$this->isError = FALSE;}
     
 }//ComponentDbSqlite
