@@ -29,8 +29,12 @@ class ControllerTests extends TheApplicationController
         $arConfig["mysql"]["pass"] = "";
         $arConfig["mysql"]["server"] = "localhost";
         
+        $arConfig["sqlite"]["db"] = "db_elchalan.sqlite3";
+        $arConfig["sqlite"]["folder"] = TFW_PATH_APPLICATIONDS."appdb";
+        
         $oInteg = new BehaviourIntegration($arConfig);
         //$oInteg->get_lite_schema();
-        $oInteg->get_lite_inserts();
+        //$oInteg->get_lite_inserts();
+        $oInteg->bulk_lite_schema();
     }
 }//ControllerTests

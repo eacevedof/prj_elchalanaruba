@@ -34,8 +34,7 @@ class BehaviourIntegration
         
         if(isset($arConfig["sqlite"]))
         {
-            $this->oSqlite = new ComponentDbSqlite($arConfig["sqlite"]["db"],$arConfig["sqlite"]["pass"]
-                ,$arConfig["sqlite"]["user"],$arConfig["sqlite"]["server"]);
+            $this->oSqlite = new ComponentDbSqlite($arConfig["sqlite"]["folder"],$arConfig["sqlite"]["db"]);
         }        
     }//__construct
   
@@ -122,17 +121,17 @@ class BehaviourIntegration
                     if($isNullable=="no")
                         $isPk = "NOT NULL ";            
                 }
-                $sLite = "$sField $sFieldType $isPk";
+                $sSQLSchema = "$sField $sFieldType $isPk";
                 if($arField["by_default"])
-                    $sLite .= "DEFAULT '{$arField["by_default"]}'";
+                    $sSQLSchema .= "DEFAULT '{$arField["by_default"]}'";
                 
-                if($arField!==$arEndField) $sLite .= ",";
-                $arLite[] = $sLite;
+                if($arField!==$arEndField) $sSQLSchema .= ",";
+                $arLite[] = $sSQLSchema;
             }//foreach
             $arLite[]=");";
         }
-        $sLite = implode("\n", $arLite);
-        echo $sLite;
+        $sSQLSchema = implode("\n",$arLite);
+        return $sSQLSchema;
     }//get_lite_schema
     
     public function get_lite_inserts()
@@ -191,6 +190,16 @@ class BehaviourIntegration
         echo "<pre>";
         echo $sLite;        
     }//get_lite_inserts
+    
+    public function bulk_lite_schema()
+    {
+        $sSQLSchema = $this->get_lite_schema();
+        $isOk=$this->oSqlite->execute($sSQLSchema);
+        
+        bug($isOk,"lite.execute");
+        if(!$isOk || $this->oSqlite->is_error())
+            pr($this->oSqlite->get_errors());
+    }
     
     public function bulk_lite_insert()
     {
@@ -296,5 +305,7 @@ class BehaviourIntegration
         ];
         return isset($arTypes[$sMotorSrc][$sType][$sMotorTrg])?$arTypes[$sMotorSrc][$sType][$sMotorTrg]:[];
     }//get_type_tr
+    
+   
     
 }//BehaviourIntegration
