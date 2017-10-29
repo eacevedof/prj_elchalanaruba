@@ -370,6 +370,4 @@ class BehaviourIntegration
         return isset($arTypes[$sMotorSrc][$sType][$sMotorTrg])?$arTypes[$sMotorSrc][$sType][$sMotorTrg]:[];
     }//get_type_tr
     
-   
-    
 }//BehaviourIntegration
