@@ -3,10 +3,8 @@ import React from "react"
 import { connect } from "react-redux"
 
 const ElementComment = (props) => {
-    let sText = props.text
-    if(this.props.trim!==undefined){
-        sText = sText.trim()
-    }
+    console.log(props)
+    let sText = "hola"
 
     return `<!-- ${sText} -->`;
 }//ElementComment
