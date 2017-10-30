@@ -6,12 +6,12 @@ import "./Carousel.css"
 
 const ElementCarousel = (props) => {
     return (  
-        <div className="jumbotron jumbotron-noback">
-            <h1>
+        <div className="jumbotron jumbotron-noback" itemscope itemtype="http://schema.org/Restaurant">
+            <h1 itemprop="name">
                 <span className="badge badge-default">El Chalán Aruba</span>
             </h1>
-            <h2>
-                The Best Peruvian Cuisine
+            <h2 itemprop="description">
+                The Best <span itemprop="servesCuisine">Peruvian</span> Cuisine
             </h2>
             <div id="carouselExampleControls" className="carousel slide col-lg-12" data-ride="carousel">
                 <div className="carousel-inner" role="listbox">
