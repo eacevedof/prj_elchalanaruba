@@ -1,11 +1,12 @@
 //<prj>/the_reactjs/src/elements/ElementFooter.js
 import React from "react"
 import { connect } from "react-redux"
+import ElementComment from "./ElementComment";
 
 const ElementFooter = (props) => {
-    return (
-        /*<!--elem_footer 1.0.0-->*/
+    return (            
         <footer className="footer">
+            <ElementComment text="footer"/>
             <div className="container">
                 <ul className="list-inline">
                     <li className="list-inline-item">
