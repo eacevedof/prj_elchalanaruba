@@ -16,10 +16,13 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "copy": "node cmds/copy.js",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "react-redux": "^5.0.6"
+    "cpy": "^6.0.0",
+    "react-redux": "^5.0.6",
+    "shelljs": "^0.7.8"
   }
 }
