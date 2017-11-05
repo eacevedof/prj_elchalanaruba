@@ -1,9 +1,21 @@
+//copy.js 1.0.0
+const oFs = require("fs")
+const oPath = require('path')
 const fnCopy = require('cpy')
-const path = require('path');
 
-const sPath = path.join(__dirname, '../node_modules/cpy-cli/cli.js');
-console.log(fnCopy)
- 
-fnCopy(['src/*.png', '!src/goat.png'], 'dist').then(() => {
-    console.log('files copied');
-});
+const sPathStatic = oPath.join(__dirname,"../build")
+const sPathDestiny = oPath.join(__dirname,"../../the_public")
+
+if(oFs.existsSync(sPathStatic) && oFs.existsSync(sPathDestiny)){
+    const fnHandler = (oErr)=>{
+        if(oErr)console.log(oErr)
+        else console.log("success!")
+    }
+    
+    const sPathS = oPath.join(sPathStatic,"/*")
+    const sPathD = oPath.join(sPathDestiny,"/")
+    oFs.copy(sPathS,sPathD,fnHandler)
+}
+//fnCopy(['src/*.png', '!src/goat.png'], 'dist').then(() => {
+//    console.log('files copied');
+//});
