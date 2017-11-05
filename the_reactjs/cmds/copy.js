@@ -12,9 +12,12 @@ if(oFs.existsSync(sPathStatic) && oFs.existsSync(sPathDestiny)){
         else console.log("success!")
     }
     
-    const sPathS = oPath.join(sPathStatic,"/*")
-    const sPathD = oPath.join(sPathDestiny,"/")
-    oFs.copy(sPathS,sPathD,fnHandler)
+//    const sPathS = oPath.join(sPathStatic,"/*")
+//    const sPathD = oPath.join(sPathDestiny,"/")
+//    oFs.copy(sPathS,sPathD,fnHandler)
+    fnCopy(["*"],"build").then(()=>{
+        console.log("files copied")
+    })
 }
 //fnCopy(['src/*.png', '!src/goat.png'], 'dist').then(() => {
 //    console.log('files copied');
