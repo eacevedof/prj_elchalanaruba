@@ -14,7 +14,9 @@ use Doctrine\ORM\Tools\Console\ConsoleRunner;
 $isDevMode = TRUE;
 
 $sDriverPath = "../../the_vendor/doctrine/annotations/lib/Doctrine/Common/Annotations";
+$sDriverPath = "../../the_vendor/doctrine/annotations";
 $sDriverPath = realpath($sDriverPath);
+//$config = Setup::createAnnotationMetadataConfiguration([$sDriverPath],$isDevMode,NULL,NULL,FALSE);
 $config = Setup::createAnnotationMetadataConfiguration([$sDriverPath],$isDevMode);
 
 $conn = array(
