@@ -1,5 +1,6 @@
 {
     "require": {
-        "theframework/helpers": "^0.0.2"
+        "theframework/helpers": "^0.0.2",
+        "doctrine/orm": "^2.5"
     }
 }
